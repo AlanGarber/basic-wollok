@@ -1,0 +1,25 @@
+import pepita.*
+
+describe "Tests de Manzana" {
+  test "Al iniciar la manzana otorga 50 calorias" {
+    assert.equals(manzana.energia(), 50)
+  }
+  
+  test "Al 100% de maduracion, la manzana otorga 100 calorias" {
+    10.times({ _ => manzana.madurar() })
+    
+    assert.equals(manzana.energia(), 100)
+  }
+  
+  test "La manzana comienza a pudrirse y cada vez que madura pierde 20 calorias" {
+    11.times({ _ => manzana.madurar() })
+    
+    assert.equals(manzana.energia(), 80)
+  }
+  
+  test "La manzana debe otorgar 0 calorias" {
+    16.times({ _ => manzana.madurar() })
+    
+    assert.equals(manzana.energia(), 0)
+  }
+}
